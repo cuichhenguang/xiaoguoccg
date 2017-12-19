@@ -71,19 +71,20 @@ html,body {min-height: 100%;}
 /* 悬浮 */
 .fmbtnhover {background: #D8D9DA ;}
 
+
 </style>
 </head>
 <body>
 
-<div class="swiper-container">
-	<div class="swiper-wrapper">
+<!-- <div class="swiper-container"> -->
+	<!-- <div class="swiper-wrapper"> -->
 		<!--First Slide-->
-		<div class="swiper-slide">
+		<!-- <div class="swiper-slide">
 			<img src="../../image/frame0101cover/frame0101cover01.jpg" alt="">
-		</div>
+		</div> -->
 
 		<!--Second Slide-->
-		<div class="swiper-slide">
+		<!-- <div class="swiper-slide">
 			<img src="../../image/frame0101cover/frame0101cover02.jpg" alt="">
 		</div>
 
@@ -101,10 +102,11 @@ html,body {min-height: 100%;}
 		</div>
 	</div>
 	<div class="pagination"></div>
-</div>
+</div> -->
 
 <!-- 2 推荐 -->
 <div class="sectionTitle mt20"><div class="titleDivider"></div><span>个性化推荐</span></div>
+
 <div class="egret-flex-item" tapmode="fmbtnhover" onclick="openRankbody()">
 	<div class="egret-flex-item-logo">
 		<img src="../../image/frame0103cover/frame0103cover12.jpg" alt="" class="">
@@ -242,19 +244,19 @@ html,body {min-height: 100%;}
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript" src="../../script/idangerous.swiper.js"></script>
 <script type="text/javascript">
-var headerPos;
 
-window.onload = function() {
-	var mySwiper = new Swiper('.swiper-container',{
-		mode:'horizontal',
-		loop: true,
-		speed:750,
-		pagination: '.pagination'
-	});
-
-	mySwiper.startAutoplay();
-}
-
+// var headerPos;
+// window.onload = function() {
+// 	var mySwiper = new Swiper('.swiper-container',{
+// 		mode:'',
+// 		loop: true,
+// 		speed:5,
+// 		pagination: '.pagination',
+// 	});
+//
+// 	mySwiper.startAutoplay();
+//
+// }
 function openRankbody () {
 	api.openWin({
 		name: 'frame0103_rank',
@@ -267,7 +269,6 @@ function openRankbody () {
 			w: 'auto',
 			h: 'auto'
 		}
-
 	});
 }
 function openMusicPlay () {
@@ -277,8 +278,15 @@ function openMusicPlay () {
 		delay:200
 	});
 }
-apiready = function  () {
-	// api.parseTapmode();
+
+// apiready = function  () {
+// 	// api.parseTapmode();
+// }
+
+apiready = function(){
+
+
+
 }
 </script>
 </html>
