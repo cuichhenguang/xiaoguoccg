@@ -108,7 +108,7 @@
         <!-- 第一头部 -->
         <div id="firstHeader" class="titlebar activebar">
             <div class="egret-header topbar normalHeader">
-                <div class="egret-header-box egret-img fl header menu2" onclick="sliding()"><a class="menu menu1" tapmode="" onclick=""></a></div>
+                <div class="egret-header-box egret-img fl header menu2" tapmode onclick="sliding()"><a class="menu menu1"></a></div>
                 <nav class="navbar">
                     <a id="navbar-item-recommend" class="navbar-item navbar-item-active" tapmode="navbar-item-hov" onclick="setFrameGroupIndex(0);">推荐</a>
                     <a id="navbar-item-rank" class="navbar-item" tapmode="navbar-item-hov" onclick="setFrameGroupIndex(1);">小国</a>
@@ -389,7 +389,6 @@ function setFrameGroupStatus(frameIndex) {
                 // $api.byId('navbar-item-ranklist').className  = "navbar-item";
                 var num = (api.winWidth / 3) * frameIndex;
                 $api.css($api.byId('navmark'), "-webkit-transform:translate(" + num + "px,0)");
-
                 break;
             }
         case 1:
@@ -427,7 +426,6 @@ function openFirstFramegroup() {
         rect: {
             x: 0,
             y: firstHeaderOffset.h + firstHeaderIndexHeight,
-            // y: firstHeaderOffset.h,
             w: "auto",
             h: api.frameHeight - firstHeaderOffset.h - firstHeaderIndexHeight - footerPos.h
         },
@@ -444,13 +442,7 @@ function openFirstFramegroup() {
             name: 'frame0301',
             url: './html/third_frame/frame0301.html',
             bounces: false,
-        }
-        // , {
-        //     name: 'frame01_rank',
-        //     url: './html/first_frame/frame01_rank.html',
-        //     bounces: false,
-        // }
-      ]
+        }]
     }, function(ret) {
         setFrameGroupStatus(ret.index);
     });
@@ -594,14 +586,8 @@ function switchframe(type) {
             }
             else {
                 openSecondFramegroup();
-
                 isThirdOpen = true;
-
             }
-
-            // openframeinstance('third_frame', firstHeaderOffset.h, false);
-            // openLeftgroup();
-            // showframe('third_frame');
             break;
         case 'forth_frame':
             randomSwitchBtn('forth_frame', 3);
@@ -613,8 +599,6 @@ function switchframe(type) {
                 openframeinstance('forth_frame', firstHeaderOffset.h, false);
                 isForthOpen = true;
             }
-
-            // showgroup('forth_frame');
             break;
         default:
             break;
@@ -677,21 +661,7 @@ apiready = function() {
 
     });
 
-  var uzgetuisdk = api.require('pushGeTui');
-   uzgetuisdk.initialize(function(ret) {
-       var value = "";
-       switch (ret.type) {
-           case 'cid':
-               value = 'cid:' + ret.cid;
-               break;
-           case 'payload':
-               value = 'payload:' + ret.payload;
-               break;
-           case 'occurError':
-               value = 'occurError';
-               break;
-       }
-   });
+
 
 };
 
