@@ -190,6 +190,29 @@ var isSecondOpen = false;
 var isThirdOpen = false;
 var isForthOpen = false;
 
+
+// 推送
+function callback(ret, err){
+      var uzgetuisdk = api.require('pushGeTui');
+      uzgetuisdk.initialize(function(ret) {
+          var value = "";
+          switch (ret.type) {
+              case 'cid':
+                  value = 'cid:' + ret.cid;
+                  break;
+              case 'payload':
+                  value = 'payload:' + ret.payload;
+                  break;
+              case 'occurError':
+                  value = 'occurError';
+                  break;
+          }
+      });
+    }
+
+
+
+
 function emptyopt() {}
 function sliding() {
     api.openSlidPane({type: 'left'});
@@ -660,8 +683,6 @@ apiready = function() {
     }, function (ret) {
 
     });
-
-
 
 };
 
