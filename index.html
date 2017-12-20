@@ -191,10 +191,7 @@ var isThirdOpen = false;
 var isForthOpen = false;
 
 
-// 推送
-    var uzgetuisdk = api.require('pushGeTui');
-    uzgetuisdk.initialize(function(ret) {    api.alert({msg:"cid:" + ret.cid});
-    });
+
 
 function emptyopt() {}
 function sliding() {
@@ -668,7 +665,10 @@ apiready = function() {
     });
 
 };
-
+// 推送
+    var uzgetuisdk = api.require('pushGeTui');
+    uzgetuisdk.initialize(function(ret) {    api.alert({msg:"cid:" + ret.cid});
+    });
 
 </script>
 </html>
