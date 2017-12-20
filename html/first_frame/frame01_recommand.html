@@ -201,17 +201,13 @@ html,body {min-height: 100%;}
 <script type="text/javascript" src="../../script/idangerous.swiper.js"></script>
 <script type="text/javascript">
 window.onload = function() {
-	// var mySwiper = new Swiper('.swiper-container',{
-	// 	// direction:'horizontal',
-	// 	loop: true,
-	// 	autoplay: 2000,
-	// 	// speed:750,
-	// 	pagination: '.swiper-pagination',
-	// 	paginationType : 'bullets',
-	// 	paginationClickable :true,
-	// });
-	//
-	// mySwiper.startAutoplay();
+	var mySwiper = new Swiper('.swiper-container',{
+		mode:'horizontal',
+		loop: true,
+		speed:750,
+		pagination: '.pagination'
+	});
+	mySwiper.startAutoplay();
 }
 
 function openMusicList () {

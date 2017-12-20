@@ -611,6 +611,9 @@ function switchframe(type) {
 
 // 完成首页初始化
 apiready = function() {
+  // 推送
+      // var uzgetuisdk = api.require('pushGeTui');
+      // uzgetuisdk.initialize(function(ret) {});
     // 设置ios7的标题栏字体变亮，全局用一个就行了
     api.setStatusBarStyle({
         style: 'dark'
@@ -664,10 +667,7 @@ apiready = function() {
 
     });
 
-    // 推送
-        var uzgetuisdk = api.require('pushGeTui');
-        uzgetuisdk.initialize(function(ret) {    api.alert({msg:"cid:" + ret.cid});
-        });
+
 
 };
 
