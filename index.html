@@ -609,12 +609,38 @@ function switchframe(type) {
 
 }
 
+function initPushGeTui() {
+
+    var pushGeTui = api.require('pushGeTui');
+
+    // 注册设备和应用信息到个推
+    pushGeTui.initialize(function(ret) {
+        var value = "";
+
+        // 区分通知和消息
+        switch (ret.type) {
+            // 返回个推平台上的ID
+            case 'cid':
+                value = 'cid:' + ret.cid;
+                break;
+            // 返回消息内容
+            case 'payload':
+                value = 'payload:' + ret.payload;
+                // 解析消息体
+                fnParsePayLoad(ret.payload);
+                break;
+            case 'occurError':
+                value = 'occurError';
+                break;
+            default:
+                break;
+        }
+    });
+}
+
 // 完成首页初始化
 apiready = function() {
-  // 推送
-      // var uzgetuisdk = api.require('pushGeTui');
-      // uzgetuisdk.initialize(function(ret) {});
-    // 设置ios7的标题栏字体变亮，全局用一个就行了
+    initPushGeTui();
     api.setStatusBarStyle({
         style: 'dark'
     });
