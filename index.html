@@ -553,7 +553,7 @@ function sliderbarCallback(id, num) {
 // ===================================
 function switchframe(type) {
     // alert(firstHeaderOffset.h);
-
+    openFrames();
     switch (type) {
         case 'first_frame':
             randomSwitchBtn('first_frame', 0);
@@ -608,42 +608,110 @@ function switchframe(type) {
     }
 
 }
+// 个推已经测试成功需要他的时候解释一下
+// function initPushGeTui() {
+//
+//     var pushGeTui = api.require('pushGeTui');
+//
+//     // 注册设备和应用信息到个推
+//     pushGeTui.initialize(function(ret) {
+//         var value = "";
+//
+//         // 区分通知和消息
+//         switch (ret.type) {
+//             // 返回个推平台上的ID
+//             case 'cid':
+//                 value = 'cid:' + ret.cid;
+//                 break;
+//             // 返回消息内容
+//             case 'payload':
+//                 value = 'payload:' + ret.payload;
+//                 // 解析消息体
+//                 fnParsePayLoad(ret.payload);
+//                 break;
+//             case 'occurError':
+//                 value = 'occurError';
+//                 break;
+//             default:
+//                 break;
+//         }
+//     });
+// }
 
-function initPushGeTui() {
 
-    var pushGeTui = api.require('pushGeTui');
 
-    // 注册设备和应用信息到个推
-    pushGeTui.initialize(function(ret) {
-        var value = "";
 
-        // 区分通知和消息
-        switch (ret.type) {
-            // 返回个推平台上的ID
-            case 'cid':
-                value = 'cid:' + ret.cid;
-                break;
-            // 返回消息内容
-            case 'payload':
-                value = 'payload:' + ret.payload;
-                // 解析消息体
-                fnParsePayLoad(ret.payload);
-                break;
-            case 'occurError':
-                value = 'occurError';
-                break;
-            default:
-                break;
+function openFrames() {
+
+    // 打开mini购物车Frame
+    api.openFrame({
+        name: 'minicart_frame',
+        url: './html/minicart_frame.html',
+        rect: {
+            x: 0,
+            y: api.winHeight - 150,
+            w: 150,
+            h: 34
+        },
+        bounces: false // 关闭弹动
+    });
+
+    // 将mini购物车Frame放置在首页Window所有Frame的最上层
+    api.bringFrameToFront({
+        from: 'minicart_frame'
+    });
+
+    // 标记为已经打开
+    framesOpened = true;
+}
+
+
+// 初始化事件监听
+function initEventListenner() {
+    // 监听城市切换事件（自定义事件）
+    api.addEventListener({
+        name: 'cityChange'
+    }, function(ret, err) {
+        if (ret) {
+            // 更新城市名称
+            updateCityName(ret.value.currentCity.name);
+
+            // 更新箭头状态
+            resetArrowState();
+
+            // 打开商品列表等首页的Frames
+            openFrames();
         }
+    });
+
+    // 拦截Android的返回键，在首页点击返回键，提示退出应用
+    api.addEventListener({
+        name: 'keyback'
+    }, function(ret, err) {
+        api.confirm({
+            title: '提示',
+            msg: '是否退出应用',
+            buttons: ['确定', '取消']
+        }, function(ret, err) {
+            if (ret.buttonIndex == 1) {
+                // 关闭当前的主Widget，就可以实现推出APP的效果
+                api.closeWidget({
+                    silent: true //直接退出，无需提示
+                });
+            }
+        });
     });
 }
 
 // 完成首页初始化
 apiready = function() {
-    initPushGeTui();
+    // initPushGeTui();
     api.setStatusBarStyle({
         style: 'dark'
     });
+
+    // 初始化事件监听
+    initEventListenner();
 
     firstHeader = $api.byId('firstHeader');
     secHeader = $api.byId('secHeader');
@@ -667,17 +735,9 @@ apiready = function() {
     var footer = $api.byId('footer');
     var footerPos = $api.offset(footer);
     var scrollHeight = $api.dom('.navbar').offsetHeight;
-    // $api.byId('navmark').style.width = api.winWidth / 3 + 'px';
     isFirstOpen = true;
     openFirstFramegroup();
-    // apiready = function () {
-    //   $api.fixStatusBar($api.dom('.header'));
-    //     api.addEventListener({
-    //         name: 'keyback'
-    //     }, function(ret, err){
-    //         api.closeWidget();
-    //     });
-    // };
+    // 侧滑边
     api.openSlidLayout({
         type: 'left',
         leftEdge: 60,
@@ -694,7 +754,7 @@ apiready = function() {
     });
 
 
-
+    openFrames();
 };
 
 
