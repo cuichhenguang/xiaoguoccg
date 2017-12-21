@@ -5,70 +5,58 @@
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-    <title>mini购物车</title>
+    <title>话筒</title>
     <link rel="stylesheet" type="text/css" href="../css/api.css" />
     <style>
     html,
     body {
         height: 100%;
         background-color: transparent;
+        margin: 0;
+        padding: 0;
     }
 
     section {
         display: inline-block;
-        box-sizing: border-box;
-        padding: 4px;
+        /*box-sizing: border-box;*/
+        /*padding: 4px;*/
         width: auto;
-        height: 33px;
+        height:25px;
         min-width: 35px;
-        line-height: 25px;
         color: #fff;
         font-size: 12px;
         /*background-image: url(../image/minicart.png);*/
-        background-color: #123;
+        /*background-color: #fff;*/
         background-repeat: no-repeat;
         background-size: auto 33px;
         background-position: right center;
+              overflow-y: hidden;
     }
-
-    .count {
-        display: none;
-        box-sizing: border-box;
-        padding-left: 4px;
-        padding-right: 4px;
-        width: auto;
-        min-width: 25px;
-        height: 25px;
-        border-radius: 13px;
-        background-color: #fff;
-        text-align: center;
-        color: #e3007f;
+    .prefix{
+      width: auto;
+      height: 40px;
+      overflow-y: hidden;
+      min-width: 35px;
+    }
+    .prefix img{
+      width: 25px;
+      height: 25px;
     }
     </style>
 </head>
 
 <body>
     <section>
-        <span class="prefix">￥</span>
-        <span id="amount" class="amount">0</span>
-        <span id="count" class="count"></span>
+        <span class="prefix"><img src="../image/huatong.png" alt=""></span>
     </section>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/db.js"></script>
 <script type="text/javascript">
 apiready = function() {
-    // initEventListenner();
-    initEventListenner()
+    initEventListenner();
 };
-// 打开购物车Window
-// function fnOpenShoppingCartWin() {
-//     api.openWin({
-//         name: 'frame0301',
-//         url: './third_frame/frame0301.html',
-//         delay: 150
-//     });
-// }
+
 // 初始化事件监听
 function initEventListenner() {
     // 监听tap事件，打开购物车Window
@@ -79,11 +67,11 @@ function initEventListenner() {
     });
 }
 
-// 打开购物车Window
+// 打开话筒页面
 function fnOpenShoppingCartWin() {
     api.openWin({
-        name: 'findmusic01',
-        url: 'findmusic01.html',
+        name: 'shoppingcart',
+        url: 'shoppingcart.html',
         delay: 150
     });
 }

@@ -228,12 +228,41 @@ function openMusicPlay () {
 		delay:200
 	});
 }
+function openFrames() {
+    // 打开话筒的frame
+    api.openFrame({
+        name: 'minicart_frame',
+        url: './html/minicart_frame.html',
+        rect: {
+            x: 0,
+            y: api.winHeight - 150,
+            w: 150,
+            h: 34
+        },
+        bounces: false // 关闭弹动
+    });
+
+    // 将Frame放置在首页Window所有Frame的最上层
+    api.bringFrameToFront({
+        from: 'minicart_frame'
+    });
+
+    // 标记为已经打开
+    framesOpened = true;
+}
+
 function openDynamic () {
 	api.openWin({
 		name: 'dynamic',
 		url: './dynamic.html',
 		delay:200
 	});
-}apiready = function  () {}
+
+
+}
+apiready = function  () {
+
+	
+}
 </script>
 </html>

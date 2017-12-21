@@ -433,7 +433,28 @@ function sliderbarCallback(id, num) {
     // 移动背景元素的宽度  在index.html不能获得 forth_frame.html上面的dom，虽然是在同一个手机屏幕上
     $api.css($api.byId(id), "-webkit-transform:translate(" + num + "px,0)");
 }
-
+// function openFrames() {
+//     // 打开话筒的frame
+//     api.openFrame({
+//         name: 'minicart_frame',
+//         url: './html/second_frame/minicart_frame.html',
+//         rect: {
+//             x: 0,
+//             y: api.winHeight - 150,
+//             w: 150,
+//             h: 34
+//         },
+//         bounces: false // 关闭弹动
+//     });
+//
+//     // 将Frame放置在首页Window所有Frame的最上层
+//     api.bringFrameToFront({
+//         from: 'minicart_frame'
+//     });
+//
+//     // 标记为已经打开
+//     framesOpened = true;
+// }
 // 完成首页初始化
 apiready = function() {
 
@@ -476,7 +497,7 @@ apiready = function() {
     //     setSecondFramegroupIndex(1)
     // }
 
-
+    // openFrames();
 
 };
 </script>

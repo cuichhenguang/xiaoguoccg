@@ -211,6 +211,7 @@ function openframe02more () {
         bounces:false,
         delay: 200
     });
+    openFrames();
 }
 function openRightgroup() {
     // var footer = $api.byId('footer');
@@ -247,6 +248,7 @@ function addfriend () {
         bounces: false,
         opaque: false
     });
+    openFrames();
 }
 function openNewWindow(type) {
     api.openWin({
@@ -256,6 +258,7 @@ function openNewWindow(type) {
         bounces: false,
         opaque: false
     });
+    openFrames();
 }
 
 function openSearch() {
@@ -265,6 +268,7 @@ function openSearch() {
         bounces: false,
         delay: 200
     });
+    openFrames();
 }
 
 function openfindmusic () {
@@ -274,6 +278,7 @@ function openfindmusic () {
         bounces: false,
         delay: 200
     });
+    openFrames();
 }
 
 // 随意切换按钮
@@ -363,6 +368,7 @@ function showgroup(type) {
         name: type ,
         hidden: false
     });
+    openFrames();
 }
 
 // 展示指定的frame
@@ -371,6 +377,7 @@ function showframe(type) {
         name: type,
         hidden: false
     });
+    openFrames();
 }
 
 function setFrameGroupIndex(frameIndex) {
@@ -379,6 +386,7 @@ function setFrameGroupIndex(frameIndex) {
         index: frameIndex,
         scroll: true
     });
+    openFrames()
 }
 
 function setFrameGroupStatus(frameIndex) {
@@ -418,6 +426,8 @@ function setFrameGroupStatus(frameIndex) {
         default:
             break;
     }
+    openFrames();
+
 }
 
 // 打开第一个framegroup
@@ -449,6 +459,7 @@ function openFirstFramegroup() {
     }, function(ret) {
         setFrameGroupStatus(ret.index);
     });
+    openFrames();
 }
 
 // -----------------------------------
@@ -485,6 +496,7 @@ function setSecondFramegroupIndex(frameIndex) {
         index: frameIndex,
         scroll: false
     });
+    openFrames();
 }
 // 打开第二个framegroup
 function openSecondFramegroup() {
@@ -512,7 +524,7 @@ function openSecondFramegroup() {
     }, function(ret) {
 
     });
-
+    openFrames();
 }
 
 // 打开frame
@@ -532,6 +544,7 @@ function openframeinstance(frame, marginTop, isBounce) {
         hScrollBarEnabled: false,
         delay: 200
     });
+    openFrames();
 }
 
 // 移动滑动块
@@ -638,12 +651,8 @@ function switchframe(type) {
 //     });
 // }
 
-
-
-
 function openFrames() {
-
-    // 打开mini购物车Frame
+    // 打开话筒的frame
     api.openFrame({
         name: 'minicart_frame',
         url: './html/minicart_frame.html',
@@ -656,7 +665,7 @@ function openFrames() {
         bounces: false // 关闭弹动
     });
 
-    // 将mini购物车Frame放置在首页Window所有Frame的最上层
+    // 将Frame放置在首页Window所有Frame的最上层
     api.bringFrameToFront({
         from: 'minicart_frame'
     });
@@ -673,12 +682,6 @@ function initEventListenner() {
         name: 'cityChange'
     }, function(ret, err) {
         if (ret) {
-            // 更新城市名称
-            updateCityName(ret.value.currentCity.name);
-
-            // 更新箭头状态
-            resetArrowState();
-
             // 打开商品列表等首页的Frames
             openFrames();
         }
@@ -709,10 +712,6 @@ apiready = function() {
     api.setStatusBarStyle({
         style: 'dark'
     });
-
-    // 初始化事件监听
-    initEventListenner();
-
     firstHeader = $api.byId('firstHeader');
     secHeader = $api.byId('secHeader');
     thirdHeader = $api.byId('thridHeader');
@@ -736,7 +735,7 @@ apiready = function() {
     var footerPos = $api.offset(footer);
     var scrollHeight = $api.dom('.navbar').offsetHeight;
     isFirstOpen = true;
-    openFirstFramegroup();
+
     // 侧滑边
     api.openSlidLayout({
         type: 'left',
@@ -752,9 +751,10 @@ apiready = function() {
     }, function (ret) {
 
     });
-
-
     openFrames();
+    openFirstFramegroup();
+    // 初始化事件监听
+    initEventListenner();
 };
 
 

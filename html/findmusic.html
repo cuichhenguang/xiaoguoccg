@@ -98,7 +98,6 @@
         <nav class="navbar" id="firstHeaderIndex">
                 <a id="navbar-item-recommend" class="navbar-item navbar-item-active" onclick="setFrameGroupIndex(0);"><img src="../image/cm2_toptab_mike_prs.png" class="switchbar_index_img" id="switchbar_index_left_img"/>识别音乐</a>
                 <a id="navbar-item-rank" class="navbar-item" onclick="setFrameGroupIndex(1);"><img src="../image/cm2_toptab_history.png" class="switchbar_index_img " id="switchbar_index_right_img"/>识别历史</a>
-
                 <mark id="navmark"></mark>
             </nav>
 
@@ -156,6 +155,7 @@ function openLeftgroup() {
         bounces: false,
         delay: 200
     });
+        openFrames();
 }
 
 function openRightgroup() {
@@ -184,6 +184,7 @@ function openRightgroup() {
         bounces: false,
         delay: 200
     });
+        openFrames();
 }
 
 function openNewWindow(type) {
@@ -194,6 +195,7 @@ function openNewWindow(type) {
         bounces: false,
         opaque: false
     });
+        openFrames();
 }
 
 
@@ -209,6 +211,7 @@ function hideAllFrame() {
         name: 'findmusicgroup',
         hidden: true
     });
+
 }
 
 function setFrameGroupIndex(frameIndex) {
@@ -219,6 +222,7 @@ function setFrameGroupIndex(frameIndex) {
         index: frameIndex,
         scroll: true
     });
+        openFrames();
 }
 
 function setFrameGroupStatus(frameIndex) {
@@ -251,6 +255,7 @@ function setFrameGroupStatus(frameIndex) {
         default:
             break;
     }
+        openFrames();
 }
 
 // 打开第一个framegroup
@@ -281,6 +286,7 @@ function openFirstFramegroup() {
     }, function(ret) {
         setFrameGroupStatus(ret.index);
     });
+        openFrames();
 }
 
 function offsetSecFrame () {
@@ -295,6 +301,7 @@ function offsetSecFrame () {
                 h: 'auto'
             }
     });
+        openFrames();
 }
 
 function backSecFrame () {
@@ -307,6 +314,7 @@ function backSecFrame () {
                 h: 'auto'
             }
     });
+        openFrames();
 }
 
 function setFrameAttribute (framename, ishidden) {
@@ -314,6 +322,7 @@ function setFrameAttribute (framename, ishidden) {
         name: framename,
         hidden: ishidden
     });
+        openFrames();
 }
 
 function openSecFrame () {
@@ -330,6 +339,7 @@ function openSecFrame () {
             }
 
         });
+            openFrames();
 }
 
 
@@ -351,6 +361,7 @@ function openframeinstance(frame, marginTop, isBounce) {
         hScrollBarEnabled: false,
         delay: 200
     });
+        openFrames();
 }
 
 // 移动滑动块
@@ -365,6 +376,31 @@ function sliderbarCallback(id, num) {
     }
     // 移动背景元素的宽度  在index.html不能获得 forth_frame.html上面的dom，虽然是在同一个手机屏幕上
     $api.css($api.byId(id), "-webkit-transform:translate(" + num + "px,0)");
+        openFrames();
+}
+
+
+function openFrames() {
+    // 打开话筒的frame
+    api.openFrame({
+        name: 'minicart_frame',
+        url: './html/minicart_frame.html',
+        rect: {
+            x: 0,
+            y: api.winHeight - 150,
+            w: 150,
+            h: 34
+        },
+        bounces: false // 关闭弹动
+    });
+
+    // 将Frame放置在首页Window所有Frame的最上层
+    api.bringFrameToFront({
+        from: 'minicart_frame'
+    });
+
+    // 标记为已经打开
+    framesOpened = true;
 }
 
 // 完成首页初始化
@@ -392,7 +428,7 @@ apiready = function() {
     // $api.byId('navmark').style.width = api.winWidth / 4 + 'px';
 
     openFirstFramegroup();
-
+    openFrames();
 };
 </script>
 </html>
