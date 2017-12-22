@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>注册Frame</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <style>
+    body{
+      background: #fff;
+      overflow: hidden;
+    }
+    .swipe-wraps{
+      width: 100%;
+      margin-top: 100px;
+    }
+    .swipe-wraps .width{
+      position: relative;
+      margin: 0 auto;
+      width: 200px;
+    }
+    .row {
+        box-sizing: border-box;
+        width: auto;
+        height: 70px;
+        /*margin-left: 32px;
+        margin-right: 32px;*/
+        padding-top: 40px;
+    }
+
+    .input {
+        width: 100%;
+        height: 25px;
+        line-height: 25px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        border-radius: 5px;
+        background-color: rgba(254,242,228,0);
+        border-bottom: 1px solid #000;
+    }
+
+    .btn {
+        width: auto;
+        height: 50px;
+        margin-left: 32px;
+        margin-right: 32px;
+        margin-top: 32px;
+        margin-bottom: 20px;
+        background-color: #e3007f;
+        color: #000;
+        font-size: 24px;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 8px;
+    }
+
+    .highlight {
+        opacity: 0.7;
+    }
+
+    .QQweixin{
+      margin-top: 10px;
+      overflow: hidden;
+    }
+    .QQweixin .QQ{
+      float: left;
+      width: 56px;
+      height: 56px;
+    }
+    .QQweixin div img{
+      width: 100%;
+    }
+    .QQweixin .weixin{
+      float: right;
+      width: 56px;
+      height: 56px;
+    }
+    </style>
+</head>
+
+<body>
+
+  <div class="swipe-wraps">
+      <div class="width">
+        <div class="row">
+            <input id="username" class="input" type="text" placeholder="用户名">
+        </div>
+        <div class="row">
+            <input id="password" class="input" type="password" placeholder="密码">
+        </div>
+        <div class="henggang"></div>
+        <div class="btn" tapmode="highlight" onclick="">注册</div>
+        <div class="QQweixin">
+          <div class="QQ"><img src="image/frame04cover/cm2_mlogo_qq.png" alt="">QQ登录</div>
+          <div class="weixin"><img src="image/frame04cover/cm2_mlogo2_weixin.png" alt="">微信登录</div>
+        </div>
+      </div>
+
+  </div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/APICloud-rest.js"></script>
+<script type="text/javascript" src="../script/SHA1.js"></script>
+<script type="text/javascript">
+apiready = function() {
+  
+};
+// 根据UI架构设计（ui-architecture.xmind），打开个人中心Window
+function fnOpenPersonalCenterWin() {
+    // 从缓存中获取用户信息
+    var userInfo = $api.getStorage('userInfo');
+
+    // 判断当前用户是否登录了
+    if (userInfo && userInfo.id) {
+        // 登录成功，打开个人中心Window
+        api.openWin({
+            name: 'personalcenter',
+            url: './personalcenter.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+    } else {
+        // 没有登录，打开登录Window
+        api.openWin({
+            name: 'login',
+            url: './login.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+    }
+}
+</script>
+
+</html>

@@ -116,15 +116,15 @@
                     <mark id="navmark"></mark>
                 </nav>
             </div>
-            <nav  id="firstHeaderIndex"></nav>
         </div>
-
+            <nav  id="firstHeaderIndex"></nav>
         <!-- 第二头部 -->
         <div id="secHeader" class="titlebar">
             <div class="egret-header topbar">
                 <div class="egret-header-title">我的听单</div>
                 <div class="egret-header-text fl pa" onclick="openframe02more ()">更多</div>
             </div>
+
         </div>
 
         <!-- 第三头部 -->
@@ -172,6 +172,7 @@
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
+
 var firstHeader = $api.byId('firstHeader');
 var secHeader = $api.byId('secHeader');
 var thirdHeader = $api.byId('thridHeader');
@@ -321,8 +322,8 @@ function randomSwitchBtn(name, index) {
             }
         }
     }
-
-    $api.fixStatusBar( $api.dom( '.titlebar.activebar .topbar') );
+    // 实现沉浸式状态栏效果
+    // $api.fixStatusBar( $api.dom( '.titlebar.activebar .topbar') );
 }
 
 // 隐藏所有的一级frame
@@ -719,8 +720,8 @@ apiready = function() {
 
     var fortheader = $api.byId('fortheader');
     var firstHeaderIndex = $api.byId('firstHeaderIndex');
-
-    $api.fixStatusBar( $api.dom( '.titlebar.activebar .topbar') );
+    // 实现沉浸式状态栏效果
+    // $api.fixStatusBar( $api.dom( '.titlebar.activebar .topbar') );
 
     // TODO 一定记得修改
     firstHeaderOffset = $api.offset(firstHeader);

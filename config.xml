@@ -1,12 +1,12 @@
  <widget id="A6068784333482"  version="0.0.1">
-    <name>xiaoguo</name>
+    <name>古之</name>
     <description>
         Example For APICloud.
     </description>
     <author email="developer@apicloud.com" href="http://www.apicloud.com">
         Developer
     </author>
-    <content src="index.html" />
+    <content src="index1.html" />
     <access origin="*" />
     <preference name="pageBounce" value="false"/>    <preference name="launcher" value="true" />
 	<preference name="appBackground" value="rgba(0,0,0,0.0)"/>
@@ -19,7 +19,7 @@
 	<preference name="autoUpdate" value="true" />
 	<preference name="smartUpdate" value="false" />
 	<preference name="debug" value="true"/>
-	<preference name="statusBarAppearance" value="false"/>
+	<preference name="statusBarAppearance" value="true"/>
 	<permission name="readPhoneState" />
 	<permission name="camera" />
 	<permission name="record" />

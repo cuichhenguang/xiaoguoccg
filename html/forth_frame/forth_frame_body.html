@@ -210,11 +210,19 @@ html,body {min-height: 100%;background-color: #f9f9f9;}
 </div>
 
 <!-- 5 -->
-<div class="exitbtn" tapmode="exitbtnhover" onclick="">退出登录</div>
+<div class="exitbtn" tapmode="exitbtnhover" onclick="fnOpenLogoWin();">退出登录</div>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript">
-
+function fnOpenLogoWin() {
+	api.openWin({
+			name: 'register',
+			url: '../../register.html',
+			pageParam: {
+					name: 'test'
+			}
+	});
+}
 function openNewWin (winname) {
 	api.openWin({
 		name: winname,
