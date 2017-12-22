@@ -108,7 +108,8 @@
         <!-- 第一头部 -->
         <div id="firstHeader" class="titlebar activebar">
             <div class="egret-header topbar normalHeader">
-                <div class="egret-header-box egret-img fl header menu2" tapmode onclick="sliding()"><a class="menu menu1"></a></div>
+                <div class="egret-header-box egret-img fl header menu2" tapmode onclick=""><a class="menu menu1"></a></div>
+                <!-- sliding() -->
                 <nav class="navbar">
                     <a id="navbar-item-recommend" class="navbar-item navbar-item-active" tapmode="navbar-item-hov" onclick="setFrameGroupIndex(0);">推荐</a>
                     <a id="navbar-item-rank" class="navbar-item" tapmode="navbar-item-hov" onclick="setFrameGroupIndex(1);">小国</a>
@@ -195,9 +196,20 @@ var isForthOpen = false;
 
 
 function emptyopt() {}
-function sliding() {
-    api.openSlidPane({type: 'left'});
-}
+// function sliding() {
+//     api.openDrawerLayout({
+//       name: 'fixed',
+//       edge:60,
+//       url: 'html/fixed.html',
+//       animation: {
+//           type: 'none'
+//       },
+//       leftPane: {
+//           name: 'index',
+//           url: 'index.html'
+//       }
+//     });
+// }
 // 打开frame
 function openframe02more () {
     api.openFrame({
@@ -323,7 +335,7 @@ function randomSwitchBtn(name, index) {
         }
     }
     // 实现沉浸式状态栏效果
-    // $api.fixStatusBar( $api.dom( '.titlebar.activebar .topbar') );
+    $api.fixStatusBar( $api.dom( '.titlebar.activebar .topbar') );
 }
 
 // 隐藏所有的一级frame
@@ -591,8 +603,6 @@ function switchframe(type) {
                 openframeinstance('second_frame', firstHeaderOffset.h, false);
                 isSecondOpen = true;
             }
-
-
             // showgroup('hot');
             break;
         case 'third_frame':
@@ -721,7 +731,7 @@ apiready = function() {
     var fortheader = $api.byId('fortheader');
     var firstHeaderIndex = $api.byId('firstHeaderIndex');
     // 实现沉浸式状态栏效果
-    // $api.fixStatusBar( $api.dom( '.titlebar.activebar .topbar') );
+    $api.fixStatusBar( $api.dom( '.titlebar.activebar .topbar') );
 
     // TODO 一定记得修改
     firstHeaderOffset = $api.offset(firstHeader);
@@ -738,20 +748,20 @@ apiready = function() {
     isFirstOpen = true;
 
     // 侧滑边
-    api.openSlidLayout({
-        type: 'left',
-        leftEdge: 60,
-        fixedPane: {
-            name: 'fixed',
-            url: 'html/fixed.html'
-        },
-        slidPane: {
-            name: 'slide',
-            url: 'index.html'
-        }
-    }, function (ret) {
-
-    });
+    // api.openSlidLayout({
+    //     type: 'left',
+    //     leftEdge: 60,
+    //     fixedPane: {
+    //         name: 'fixed',
+    //         url: 'html/fixed.html'
+    //     },
+    //     slidPane: {
+    //         name: 'slide',
+    //         url: 'index.html'
+    //     }
+    // }, function (ret) {
+    //     alert("123123");
+    // });
     openFrames();
     openFirstFramegroup();
     // 初始化事件监听

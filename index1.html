@@ -122,7 +122,6 @@
             apiready = function() {
 
             }
-
             function initSlide() {
                 var slide = $api.byId('slide');
                 var pointer = $api.domAll('#pointer div');
@@ -141,32 +140,7 @@
                     }
                 });
             }
-            // 根据UI架构设计（ui-architecture.xmind），打开个人中心Window
-            function fnOpenPersonalCenterWin() {
-                // 从缓存中获取用户信息
-                var userInfo = $api.getStorage('userInfo');
 
-                // 判断当前用户是否登录了
-                if (userInfo && userInfo.id) {
-                    // 登录成功，打开个人中心Window
-                    api.openWin({
-                        name: 'personalcenter',
-                        url: './personalcenter.html',
-                        pageParam: {
-                            name: 'test'
-                        }
-                    });
-                } else {
-                    // 没有登录，打开登录Window
-                    api.openWin({
-                        name: 'login',
-                        url: './login.html',
-                        pageParam: {
-                            name: 'test'
-                        }
-                    });
-                }
-            }
             // 打开注册Window
             function fnOpenRegisterWin () {
                 // api.openWin({

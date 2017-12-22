@@ -126,7 +126,26 @@
 <script type="text/javascript">
 apiready = function() {
     // fnInitUIInput();
+    // 侧滑边
+    api.openSlidLayout({
+        type: 'left',
+        leftEdge: 60,
+        fixedPane: {
+            name: 'fixed',
+            url: 'html/fixed.html'
+        },
+        slidPane: {
+            name: 'slide',
+            url: 'index.html'
+        }
+    }, function (ret) {
+        alert("131235");
+    });
+
 };
+function sliding() {
+    api.openSlidPane({type: 'left'});
+}
 function fnOpenIndexWin(){
   api.openWin({
       name: 'index',
