@@ -180,10 +180,10 @@ html,body {min-height: 100%;background-color: #f3f3f3;height: 100%;}
 		<div class="info"><img src="../../image/musiclist/musiclisttool01.png" alt=""></div>
 		<div class="num">收藏</div>
 	</div>
-	<div class="userinfocol" tapmode="toolhover" onclick="downloadMusic()">
+	<!-- <div class="userinfocol" tapmode="toolhover" onclick="downloadMusic()">
 		<div class="info"><img src="../../image/musiclist/musiclisttool02.png" alt=""></div>
 		<div class="num">下载</div>
-	</div>
+	</div> -->
 	<div class="userinfocol" tapmode="toolhover" onclick="openMusiclistshare()">
 		<div class="info"><img src="../../image/musiclist/musiclisttool03.png" alt=""></div>
 		<div class="num">分享</div>
@@ -248,9 +248,9 @@ function downloadAll () {
 		buttons:["确定", "取消"]
 		},function(ret,err){
 		if(ret.buttonIndex == 1){
-			
+
 		}
-		else{	
+		else{
 		}
 	});
 }
@@ -261,9 +261,9 @@ function downloadMusic () {
 		msg: '下载本首歌？',
 		buttons:["确定", "取消"]
 		},function(ret,err){
-		if(ret.buttonIndex == 1){	
+		if(ret.buttonIndex == 1){
 		}
-		else{	
+		else{
 		}
 	});
 
@@ -308,7 +308,7 @@ function emptylist () {
 			var musiclistitem = document.getElementsByClassName('musiclist-item')[0];
 			var musiclistitemtool = document.getElementsByClassName('musiclist-item-tool')[0];
 			var norecord = document.getElementsByClassName('norecord')[0];
-			
+
 			emptyitem.remove();
 			playall.remove();
 			musiclistitem.remove();
@@ -316,10 +316,10 @@ function emptylist () {
 
 			norecord.style.display = 'block';
 		}
-		
+
 	});
 
-	
+
 }
 </script>
 </html>

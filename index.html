@@ -6,9 +6,7 @@
     <title>孔孟之道</title>
     <link rel="stylesheet" type="text/css" href="./css/api.css" />
     <link rel="stylesheet" type="text/css" href="./css/common.css" />
-
     <style>
-
     /* 头部样式 */
       #firstHeader {background-color:  #D43C33;}
       #secHeader {background-color:  #D43C33;}
@@ -108,7 +106,8 @@
         <!-- 第一头部 -->
         <div id="firstHeader" class="titlebar activebar">
             <div class="egret-header topbar normalHeader">
-                <div class="egret-header-box egret-img fl header menu2" tapmode onclick=""><a class="menu menu1"></a></div>
+                  <!-- // 侧滑边暂不需要了 -->
+                <!-- <div class="egret-header-box egret-img fl header menu2" tapmode onclick=""><a class="menu menu1"></a></div> -->
                 <!-- sliding() -->
                 <nav class="navbar">
                     <a id="navbar-item-recommend" class="navbar-item navbar-item-active" tapmode="navbar-item-hov" onclick="setFrameGroupIndex(0);">推荐</a>
@@ -138,7 +137,6 @@
             </div>
         </div>
 
-
         <!-- 第四头部 -->
         <div id="fortheader" class="titlebar">
             <div class="egret-header topbar">
@@ -165,7 +163,7 @@
           </li>
 
           <li tapmode="activebtn3 activebtn" onclick="switchframe('forth_frame')">
-            <a class="bottom_btn bbtn04 home">设置</a>
+            <a class="bottom_btn bbtn04 home">我</a>
           </li>
         </ul>
       </div>
@@ -447,7 +445,7 @@ function setFrameGroupStatus(frameIndex) {
 function openFirstFramegroup() {
     api.openFrameGroup({
         name: 'framegroup01',
-        background: '#FFF',
+        // background: '#FFF',
         scrollEnabled: true,
         rect: {
             x: 0,
@@ -516,7 +514,7 @@ function openSecondFramegroup() {
 
     api.openFrameGroup({
         name: 'framegroup02',
-        background: '#FFF',
+        background: 'none',
         scrollEnabled: false,
         rect: {
             x: 0,
@@ -747,7 +745,7 @@ apiready = function() {
     var scrollHeight = $api.dom('.navbar').offsetHeight;
     isFirstOpen = true;
 
-    // 侧滑边
+    // 侧滑边暂不需要了
     // api.openSlidLayout({
     //     type: 'left',
     //     leftEdge: 60,

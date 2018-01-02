@@ -6,7 +6,7 @@
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>注册Frame</title>
-    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
     <style>
     body{
       background: #fff;
@@ -24,10 +24,10 @@
     .row {
         box-sizing: border-box;
         width: auto;
-        height: 70px;
-        /*margin-left: 32px;
-        margin-right: 32px;*/
-        padding-top: 40px;
+        -webkit-margin-before: 1em;
+        -webkit-margin-after: 1em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
     }
 
     .input {
@@ -55,12 +55,30 @@
         line-height: 50px;
         text-align: center;
         border-radius: 8px;
+        border: none;
     }
 
     .highlight {
         opacity: 0.7;
     }
 
+    .henggang{
+      margin-top: 20px 0;
+      border-bottom: 1px solid #000;
+      overflow: hidden;
+      clear: both;
+    }
+    .zhuce{
+      float: left;
+      width: 50px;
+      height: 30px;
+      overflow: hidden;
+    }
+    .wjmm{
+      float: right;
+      width: 70px;
+      height: 30px;
+    }
     .QQweixin{
       margin-top: 10px;
       overflow: hidden;
@@ -82,60 +100,55 @@
 </head>
 
 <body>
-
   <div class="swipe-wraps">
       <div class="width">
         <div class="row">
             <input id="username" class="input" type="text" placeholder="用户名">
         </div>
         <div class="row">
-            <input id="password" class="input" type="password" placeholder="密码">
+            <input id="username" class="input" type="text" placeholder="手机号">
         </div>
-        <div class="henggang"></div>
-        <div class="btn" tapmode="highlight" onclick="">注册</div>
+        <form action="" method="post" name="my_f1" onsubmit="return check(this);" >
+          <p>
+              <input type="password" class="input" required="true" name="passwd1" placeholder="密码"/>
+          </p>
+          <p>
+              <input type="password" class="input" required="true" name="passwd2" placeholder="确认密码"/>
+          </p>
+          <div class="btn" tapmode="highlight" onclick="" type="submit" tapmode="highlight">注册</div>
+      </form>
+
+        <!-- <div class="row">
+            <input id="password" class="input" type="password" placeholder="密码">
+        </div> -->
+        <!-- <div class="btn" tapmode="highlight" onclick="">注册</div> -->
+        <div class="henggang">
+          <div class="zhuce" onclick="fnOpenRegisterWin();">登录</div>
+          <!-- <div class="wjmm">忘记密码</div> -->
+        </div>
         <div class="QQweixin">
-          <div class="QQ"><img src="image/frame04cover/cm2_mlogo_qq.png" alt="">QQ登录</div>
-          <div class="weixin"><img src="image/frame04cover/cm2_mlogo2_weixin.png" alt="">微信登录</div>
+          <div class="QQ"><img src="image/frame04cover/cm2_mlogo_qq.png" alt=""></div>
+          <div class="weixin"><img src="image/frame04cover/cm2_mlogo2_weixin.png" alt=""></div>
         </div>
       </div>
-
   </div>
-
 </body>
-<script type="text/javascript" src="../script/api.js"></script>
-<script type="text/javascript" src="../script/APICloud-rest.js"></script>
-<script type="text/javascript" src="../script/SHA1.js"></script>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript" src="./script/APICloud-rest.js"></script>
+<script type="text/javascript" src="./script/SHA1.js"></script>
 <script type="text/javascript">
-apiready = function() {
-  
+apiready = function() {};
 
-};
-// 根据UI架构设计（ui-architecture.xmind），打开个人中心Window
-function fnOpenPersonalCenterWin() {
-    // 从缓存中获取用户信息
-    var userInfo = $api.getStorage('userInfo');
-
-    // 判断当前用户是否登录了
-    if (userInfo && userInfo.id) {
-        // 登录成功，打开个人中心Window
-        api.openWin({
-            name: 'personalcenter',
-            url: './personalcenter.html',
-            pageParam: {
-                name: 'test'
-            }
-        });
-    } else {
-        // 没有登录，打开登录Window
-        api.openWin({
-            name: 'login',
-            url: './login.html',
-            pageParam: {
-                name: 'test'
-            }
-        });
-    }
+function fnOpenRegisterWin(){
+  api.openWin({
+      name: 'register',
+      url: './register.html',
+      pageParam: {
+          name: 'test'
+      }
+  });
 }
+
 </script>
 
 </html>

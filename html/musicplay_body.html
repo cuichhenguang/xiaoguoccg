@@ -29,19 +29,19 @@ body {height: 100%;}
 	transform-origin: 50% 10%;
 	transition: all 0.8s ease;
 
-	-webkit-transform: rotate(-30deg); 
+	-webkit-transform: rotate(-30deg);
 	-webkit-transform-origin: 50% 10%;
 	-webkit-transition: all 0.8s ease;}
 
-.playdisc {position:absolute; width: 200px; left: 50%;margin-left: -100px; top: 70px; 
+.playdisc {position:absolute; width: 200px; left: 50%;margin-left: -100px; top: 70px;
 	animation:playing 5s infinite linear;
 	animation-play-state: paused;
 
-	-webkit-animation:playing 5s infinite linear; 
+	-webkit-animation:playing 5s infinite linear;
 	-webkit-animation-play-state: paused;
 }
 
-.play-up-toolbar {position: absolute; bottom: 0; display: -webkit-box;}
+.play-up-toolbar {position: absolute; bottom: 0; display: -webkit-box;width: 100%;}
 .play-up-toolbar .play-up-tool {-webkit-box-flex:1;text-align: center;}
 .play-up-toolbar .play-up-tool img {width: 70%;}
 
@@ -63,7 +63,7 @@ body {height: 100%;}
 	<img src="../image/musicplay/play_needle01.png" alt="" class="play_needle">
 	<div class="play-up-toolbar">
 		<div class="play-up-tool br"><img src="../image/musicplay/play_up_tool01.png" alt=""></div>
-		<div class="play-up-tool br bl"><img src="../image/musicplay/play_up_tool02.png" alt=""></div>
+		<!-- <div class="play-up-tool br bl"><img src="../image/musicplay/play_up_tool02.png" alt=""></div> -->
 		<div class="play-up-tool br bl"><img src="../image/musicplay/play_up_tool03.png" alt=""></div>
 		<div class="play-up-tool br bl"><img src="../image/musicplay/play_up_tool04.png" alt=""></div>
 		<div class="play-up-tool bl"><img src="../image/musicplay/play_up_tool05.png" alt=""></div>
@@ -105,7 +105,7 @@ function stopmusic () {
 function switchmusic (button) {
 
 	var click = button.getAttribute("data-click");
-		
+
 	if (click == 0) {
 		// 点开
 		button.setAttribute("data-click", 1);
